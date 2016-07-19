@@ -23,13 +23,21 @@ public class GamePanel extends JPanel{
 		this.model=model;
 		addMouseListener(new MouseAdapter(){
 			public void mousePressed(MouseEvent e) {
-				chooseCell(model.getCellLocation(e.getPoint()));
+				if (model.getBounds().contains(e.getPoint())){
+					chooseCell(model.getCellLocation(e.getPoint()));
+				}
             }
         });
 	}
 	
 	public Dimension getPreferredSize(){
-		return new Dimension(300,300);
+		return new Dimension(400,400);
+	}
+	
+	public void resetGame(){
+		model.resetBoard();
+		numplays=0;
+		player=1;
 	}
 	
 	private void chooseCell(GameCell cell){
@@ -41,15 +49,17 @@ public class GamePanel extends JPanel{
 			player=-1*player;
 			numplays++;
 		}
+		else JOptionPane.showMessageDialog(this, "Please choose an open square");
+
         repaint();
 
 		int winner = checkForWinner();
 		if (numplays==9 && winner==0){
-			JOptionPane.showMessageDialog(null, "Cat's game");
+			JOptionPane.showMessageDialog(this, "Cat's game");
 		}
 		else if(winner!=0){
-			if (winner==1)JOptionPane.showMessageDialog(null, "X wins!");
-			else JOptionPane.showMessageDialog(null, "O wins!");
+			if (winner==1)JOptionPane.showMessageDialog(this, "X wins!");
+			else JOptionPane.showMessageDialog(this, "O wins!");
 		}
 	}
 	
@@ -75,5 +85,6 @@ public class GamePanel extends JPanel{
 	protected void paintComponent(Graphics g) {
         super.paintComponent(g);
         model.draw(g);
+        
     }
 }

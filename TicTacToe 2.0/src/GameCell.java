@@ -47,7 +47,6 @@ public class GameCell {
 	
 	public boolean isTaken(){
 		if (value==1 || value==-1) {
-			JOptionPane.showMessageDialog(null, "PLease choose and open square");
 			return true;
 		}
 		else return false;
