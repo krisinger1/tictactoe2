@@ -7,13 +7,15 @@ import javax.swing.JFrame;
 import javax.swing.SwingUtilities;
 
 public class TicTacToeGame {
-
+		private final Dimension MIN_SIZE=new Dimension(600,400);
+		
 	   
 	 
 	    TicTacToeGame(){
 	    	JFrame frame = new JFrame();
 	    	frame.setLayout(new FlowLayout());
 	    	frame.setPreferredSize(new Dimension(600,400));
+	    	frame.setMinimumSize(MIN_SIZE);
 	    	GamePanel gamePanel = new GamePanel(new GameBoard());
 	    	ButtonPanel buttonPanel = new ButtonPanel(gamePanel);
 	    	//gamePanel.setLayout(new BorderLayout());

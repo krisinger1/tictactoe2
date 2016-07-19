@@ -16,7 +16,7 @@ public class ButtonPanel extends JPanel{
 		reset.addActionListener(new ActionListener(){
 			public void actionPerformed(ActionEvent ae){
 				gamepanel.resetGame();
-				repaint();
+				gamepanel.repaint();
 			}
 		});
 		this.add(reset);
@@ -24,7 +24,7 @@ public class ButtonPanel extends JPanel{
 	
 	public void paintComponent(Graphics g){
 		super.paintComponent(g);
-		gamepanel.repaint();
+		//gamepanel.repaint();
 		
 	}
 }
